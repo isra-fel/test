@@ -6,6 +6,5 @@
 
   <ItemGroup>
     <Compile Include="../shared-src/Constants.cs" />
-    <ProjectReference Include="../lib1/lib1.csproj" />
   </ItemGroup>
 </Project>

@@ -1,0 +1,17 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <ItemGroup>
+    <ProjectReference Include="..\lib1\lib1.csproj">
+      <Aliases>Lib1</Aliases>
+    </ProjectReference>
+    <ProjectReference Include="..\lib2\lib2.csproj">
+      <Aliases>Lib2</Aliases>
+    </ProjectReference>
+  </ItemGroup>
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+  </PropertyGroup>
+
+</Project>

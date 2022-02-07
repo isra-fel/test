@@ -2,9 +2,9 @@
 
 [assembly: InternalsVisibleTo("app")]
 
-namespace lib1
+namespace lib2
 {
-    public class Class1
+    public class Class2
     {
     }
 }
