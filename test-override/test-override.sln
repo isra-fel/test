@@ -9,6 +9,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "common-lib", "class-lib\com
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "contract", "contract\contract.csproj", "{1549DB07-8952-4DAC-ABC8-9DAF9360FD79}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "direct-inherit", "direct-inherit\direct-inherit.csproj", "{EDD0D1B4-4CC8-469A-9993-081372026A66}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{1549DB07-8952-4DAC-ABC8-9DAF9360FD79}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1549DB07-8952-4DAC-ABC8-9DAF9360FD79}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1549DB07-8952-4DAC-ABC8-9DAF9360FD79}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EDD0D1B4-4CC8-469A-9993-081372026A66}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EDD0D1B4-4CC8-469A-9993-081372026A66}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EDD0D1B4-4CC8-469A-9993-081372026A66}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EDD0D1B4-4CC8-469A-9993-081372026A66}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
