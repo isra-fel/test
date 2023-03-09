@@ -1,0 +1,1 @@
+This solution is to verify that changing a (public) field to a property is a binary breaking change, and will break assemblies depending on the changed assembly.
