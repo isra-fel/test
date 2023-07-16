@@ -20,3 +20,5 @@ foreach (NuGetVersion version in versions)
 {
     Console.WriteLine($"Found version {version}");
 }
+
+// https://learn.microsoft.com/en-us/nuget/reference/nuget-client-sdk
