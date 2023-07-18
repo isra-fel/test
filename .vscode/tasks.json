@@ -7,11 +7,15 @@
             "type": "process",
             "args": [
                 "build",
-                "${workspaceFolder}/repro-track2-alc/repro-track2-alc.csproj",
+                "${workspaceFolder}/test-nuget/test-nuget.csproj",
                 "/property:GenerateFullPaths=true",
                 "/consoleloggerparameters:NoSummary"
             ],
-            "problemMatcher": "$msCompile"
+            "problemMatcher": "$msCompile",
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            }
         },
         {
             "label": "publish",
