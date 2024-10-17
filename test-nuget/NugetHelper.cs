@@ -48,20 +48,7 @@ static class NugetHelper
             inputStream.CopyTo(outputStream);
         }
 
-        string[] runtimeAssemblies = Directory.GetFiles(RuntimeEnvironment.GetRuntimeDirectory(), "*.dll");
-        var resolver = new PathAssemblyResolver(runtimeAssemblies);
-        var mlc = new MetadataLoadContext(resolver);
-
-        // todo: reuse mlc?
-        using (mlc)
-        using (var asmStream = File.OpenRead(targetAsmPath))
-        {
-            // Load assembly into MetadataLoadContext.
-            Assembly assembly = mlc.LoadFromStream(asmStream);
-            AssemblyName name = assembly.GetName();
-            Console.WriteLine(name.Version);
-            return name.Version;
-        }
+        return AssemblyMetadataHelper.GetAssemblyMetadata(targetAsmPath).Version;
     }
 
     public static async Task<string> GetPkgVerByAsmVerAsync(string assemblyName, Version assemblyVersion, string targetFramework)
