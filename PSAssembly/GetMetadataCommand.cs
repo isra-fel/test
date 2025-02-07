@@ -15,6 +15,8 @@ namespace PSAssembly
         [Parameter(Mandatory = true, Position = 0)]
         public string Path { get; set; }
 
+        [Parameter]
+        public SwitchParameter PublicOnly { get; set; }
 
         private MetadataLoadContext Mlc => _mlc.Value;
         private Lazy<MetadataLoadContext> _mlc = new Lazy<MetadataLoadContext>(() =>
@@ -31,21 +33,25 @@ namespace PSAssembly
             {
                 // Load assembly into MetadataLoadContext.
                 Assembly assembly = Mlc.LoadFromStream(asmStream);
-                AssemblyName name = assembly.GetName();
+                AssemblyName assemblyName = assembly.GetName();
 
                 IList<ANamespace> namespaces = new List<ANamespace>();
                 foreach (var type in assembly.GetTypes())
                 {
+                    if (PublicOnly && !type.IsPublic)
+                    {
+                        continue;
+                    }
                     var namespaceName = type.Namespace;
                     var namespaceObj = namespaces.FirstOrDefault(n => n.Name == namespaceName);
                     if (namespaceObj == null)
                     {
-                        namespaceObj = new ANamespace(namespaceName);
+                        namespaceObj = new ANamespace(assemblyName, namespaceName);
                         namespaces.Add(namespaceObj);
                     }
-                    namespaceObj.Types.Add(new AType(name, type.Name, namespaceName));
+                    namespaceObj.Types.Add(new AType(assemblyName, type.Name, namespaceName));
                 }
-                WriteObject(new AAssembly(name) { Namespaces = namespaces });
+                WriteObject(new AAssembly(assemblyName) { Namespaces = namespaces });
             }
         }
     }
@@ -62,10 +68,12 @@ namespace PSAssembly
 
     public class ANamespace
     {
-        public IList<AType> Types { get; set; }
+        public AssemblyName AssemblyName { get; set; }
         public string Name { get; set; }
-        public ANamespace(string name)
+        public IList<AType> Types { get; set; }
+        public ANamespace(AssemblyName assemblyName, string name)
         {
+            AssemblyName = assemblyName;
             Name = name;
             Types = new List<AType>();
         }
